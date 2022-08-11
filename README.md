@@ -57,3 +57,17 @@ github는 진짜 개발 공간으로만 간다.
 22.08.09
 
 [오늘 한 거 주소](https://velog.io/@poeynus/Spring-Security-Step-5)
+
+22.08.11
+
+오늘 너무 피곤해서 조금밖에 못했다.
+일단 간단하게만 여기 적고 정리는 내일 집 내려가서 블로그에써야겠다.
+
+Config 에서 DataSource를 매개변수로 쓸 때 Intellij에서 Could not autowire. No beans of 'DataSource' type found. 에러가 발생한다.
+이것은 Intellij의 버그로 가끔 인식을 못하는 것이다. 실행 해보면 잘만 된다.
+
+강의에서는 Aws를 사용해 mysql을 구성 했는데 나는 Docker에 Mysql 올려서 사용 했다.
+
+JPA를 적용했고, entity와 interface를 만들었다.
+
+(진짜 별로 못했네. 내일 집 내려가서 벨로그도 갈고 좀 많이 해야겠다. 원래 오늘 spark 강의도 보려 했는데 내일 회사 가서 봐야겠다.)

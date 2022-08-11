@@ -7,9 +7,13 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.provisioning.JdbcUserDetailsManager;
+
+import javax.sql.DataSource;
 
 @Configuration
 public class ProjectSecurityConfig extends WebSecurityConfigurerAdapter {
@@ -36,14 +40,19 @@ public class ProjectSecurityConfig extends WebSecurityConfigurerAdapter {
 //                    .passwordEncoder(NoOpPasswordEncoder.getInstance());
 //    }
 
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        InMemoryUserDetailsManager userDetailsService = new InMemoryUserDetailsManager();
-        UserDetails user = User.withUsername("admin").password("12345").authorities("admin").build();
-        UserDetails user1 = User.withUsername("user").password("12345").authorities("read").build();
-        userDetailsService.createUser(user);
-        userDetailsService.createUser(user1);
-        auth.userDetailsService(userDetailsService);
+//    @Override
+//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//        InMemoryUserDetailsManager userDetailsService = new InMemoryUserDetailsManager();
+//        UserDetails user = User.withUsername("admin").password("12345").authorities("admin").build();
+//        UserDetails user1 = User.withUsername("user").password("12345").authorities("read").build();
+//        userDetailsService.createUser(user);
+//        userDetailsService.createUser(user1);
+//        auth.userDetailsService(userDetailsService);
+//    }
+
+    @Bean
+    public UserDetailsService userDetailsService(DataSource dataSource) {
+        return new JdbcUserDetailsManager(dataSource);
     }
 
     // password encoder 없이 그냥 configure만 사용하면 로그인 시 에러 발생함
