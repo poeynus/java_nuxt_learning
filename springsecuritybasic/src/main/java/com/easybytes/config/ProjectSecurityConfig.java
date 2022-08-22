@@ -50,10 +50,10 @@ public class ProjectSecurityConfig extends WebSecurityConfigurerAdapter {
 //        auth.userDetailsService(userDetailsService);
 //    }
 
-    @Bean
-    public UserDetailsService userDetailsService(DataSource dataSource) {
-        return new JdbcUserDetailsManager(dataSource);
-    }
+//    @Bean
+//    public UserDetailsService userDetailsService(DataSource dataSource) {
+//        return new JdbcUserDetailsManager(dataSource);
+//    }
 
     // password encoder 없이 그냥 configure만 사용하면 로그인 시 에러 발생함
     // (spring security는 항상 사용자 비밀번호를 encoder와 map해서 비교하기 때문인 거 같다.)
